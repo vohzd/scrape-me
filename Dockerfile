@@ -33,7 +33,6 @@ RUN mkdir /screenshots \
     && chown -R pptruser:pptruser /usr/local/share/.config/yarn/global/node_modules \
     && chown -R pptruser:pptruser /screenshots \
     && chown -R pptruser:pptruser /app \
-    && chown -R pptruser:pptruser /tools
 
 # Run everything after as non-privileged user.
 USER pptruser
