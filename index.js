@@ -18,6 +18,10 @@ const scapeRoutes                   = require("./routes/scrape/index.js");
 
 app.use("/", scapeRoutes);
 
+// make screenshots public
+app.use("/screenshots", express.static("screenshots"))
+
+
 /*
  *   START SERVER
  */
