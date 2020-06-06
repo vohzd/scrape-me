@@ -25,7 +25,6 @@ RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
     && chown -R pptruser:pptruser /app
 
 # Run everything after as non-privileged user.
-USER pptruser
 
 WORKDIR /src
 COPY package.json .
@@ -33,5 +32,6 @@ RUN sudo npm i
 COPY . .
 
 EXPOSE 5566
+USER pptruser
 
 CMD ["npm", "start"]
