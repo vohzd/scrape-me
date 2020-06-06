@@ -1,4 +1,4 @@
-FROM mhart/alpine-node
+FROM mhart/alpine-node:12
 
 # Installs latest Chromium (77) package.
 RUN apk add --no-cache \
