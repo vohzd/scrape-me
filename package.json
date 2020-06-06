@@ -1,6 +1,6 @@
 {
   "name": "scrape-me-server",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "scrape me server",
   "scripts": {
     "dev": "nodemon ./index.js",
