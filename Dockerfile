@@ -28,7 +28,7 @@ RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
 
 WORKDIR /src
 COPY package.json .
-RUN sudo npm i
+RUN npm i
 COPY . .
 
 EXPOSE 5566
