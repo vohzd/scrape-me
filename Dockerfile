@@ -23,6 +23,8 @@ RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
     && mkdir -p /home/pptruser/Downloads /app \
     && chown -R pptruser:pptruser /home/pptruser \
     && chown -R pptruser:pptruser /app
+    && chown -R pptruser:pptruser /src
+
 
 # Run everything after as non-privileged user.
 USER pptruser
