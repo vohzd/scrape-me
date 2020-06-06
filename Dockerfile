@@ -34,5 +34,5 @@ RUN npm install
 EXPOSE 5566
 COPY . .
 
-CMD ["google-chrome-unstable"]
+CMD ["google-chrome-unstable" , "--no-sandbox"]
 CMD ["npm", "start"]
