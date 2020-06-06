@@ -22,7 +22,7 @@ RUN mkdir /noto \
     ca-certificates \
     wget \
   && apt-get autoremove -y \
-  && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+  && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
   && sysctl -w kernel.unprivileged_userns_clone=1
 # Dependencies package
 # https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md
