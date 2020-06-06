@@ -14,14 +14,14 @@ RUN apk add --no-cache \
 
 # Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
-
-RUN yarn add puppeteer
-
-WORKDIR /src
 COPY package.json .
-RUN npm i
-COPY . .
+
 
 EXPOSE 5566
+
+WORKDIR /src
+RUN yarn add puppeteer
+RUN yarn install
+COPY . .
 
 CMD ["npm", "start"]
