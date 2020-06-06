@@ -32,6 +32,6 @@ RUN npm i
 COPY . .
 
 EXPOSE 5566
-USER pptruser
 
 CMD ["npm", "start"]
+USER pptruser
