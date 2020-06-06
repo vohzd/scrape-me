@@ -40,6 +40,7 @@ RUN npm install
 USER pptruser
 
 EXPOSE 5566
+COPY . .
 
 CMD ["google-chrome-unstable"]
 CMD ["npm", "start"]
