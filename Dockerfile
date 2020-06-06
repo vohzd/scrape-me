@@ -24,6 +24,9 @@ RUN apt-get update \
 # ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
 # Install puppeteer so it's available in the container.
+
+COPY package.json .
+
 RUN npm i puppeteer \
     # Add user so we don't need --no-sandbox.
     # same layer as npm install to keep re-chowned files from using up several hundred MBs more space
@@ -32,11 +35,9 @@ RUN npm i puppeteer \
     && chown -R pptruser:pptruser /home/pptruser \
     && chown -R pptruser:pptruser /node_modules
 
-# Run everything after as non-privileged user.
-USER pptruser
-
-COPY package.json .
 RUN npm install
+
+USER pptruser
 
 EXPOSE 5566
 
