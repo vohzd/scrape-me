@@ -4,7 +4,7 @@
 # https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker
 
 FROM node:latest
-    
+
 RUN  apt-get update \
      && apt-get install -y wget gnupg ca-certificates \
      && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
@@ -21,12 +21,15 @@ RUN  apt-get update \
      && chmod +x /usr/sbin/wait-for-it.sh
 
 # Install Puppeteer under /node_modules so it's available system-wide
-ADD package.json package-lock.json /
-RUN npm install
-
 COPY package.json .
-RUN npm install
+RUN npm install \
+    && groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
+    && mkdir -p /home/pptruser/Downloads \
+    && chown -R pptruser:pptruser /home/pptruser \
+    && chown -R pptruser:pptruser /node_modules
+
 EXPOSE 5566
 COPY . .
 
 CMD ["npm", "start"]
+USER pptruser
