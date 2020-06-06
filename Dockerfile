@@ -29,7 +29,7 @@ USER pptruser
 
 WORKDIR /src
 COPY package.json .
-RUN npm i
+RUN sudo npm i
 COPY . .
 
 EXPOSE 5566
