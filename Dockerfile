@@ -18,6 +18,11 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 # Puppeteer v1.19.0 works with Chromium 77.
 RUN yarn add puppeteer@1.19.0
 
+WORKDIR /src
+COPY package.json .
+RUN npm i
+COPY . .
+
 # Add user so we don't need --no-sandbox.
 RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
     && mkdir -p /home/pptruser/Downloads /app \
@@ -28,11 +33,6 @@ RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
 
 # Run everything after as non-privileged user.
 USER pptruser
-
-WORKDIR /src
-COPY package.json .
-RUN npm i
-COPY . .
 
 EXPOSE 5566
 
