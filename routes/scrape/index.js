@@ -18,10 +18,15 @@ router.get("/website", async (req, res, next) => {
   // call it like this example.com/website?url=https://YOURWEBSITE.com
   const url = req.query.url;
   console.log(req.query)
+
+  /*
   const browser = await puppeteer.launch({
     headless: true,
     args: ['--disable-dev-shm-usage']
-  });
+  });*/
+  const browser = await puppeteer.launch({
+    headless: true,
+  })
   const page = await browser.newPage();
   await page.goto(url);
   await page.waitFor(1000)

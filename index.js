@@ -2,7 +2,7 @@
  * DEPS
  */
 const express                       = require("express");
-const port                          = 5566;
+const port                          = 1337;
 const app                           = express();
 
 /*
